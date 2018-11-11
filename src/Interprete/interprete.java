@@ -114,8 +114,8 @@ public class interprete extends MiParserBaseVisitor {
             visit(ctx.declaration(i));
         }
         for (int i=0; i <= ctx.methodDecl().size()-1;i++) {
-           isGlobal=false;
-           visit(ctx.methodDecl(i));
+            isGlobal=false;
+            visit(ctx.methodDecl(i));
         }
         for (int i=0; i <= listaIntruccionesGeneradas.size()-1;i++){
             System.out.println(listaIntruccionesGeneradas.get(i));

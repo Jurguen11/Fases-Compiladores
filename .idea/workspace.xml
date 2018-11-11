@@ -1,109 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c5c081d-a9ed-4ee2-922a-0d1f57019d4a" name="Default Changelist" comment="Compi 3 fase">
-      <change afterPath="$PROJECT_DIR$/src/Interprete/interprete.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/visitor/ClassTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/visitor/ConstTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/visitor/MethodTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/visitor/previsit.java" afterDir="false" />
+    <list default="true" id="2c5c081d-a9ed-4ee2-922a-0d1f57019d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiParser.g4" beforeDir="false" afterPath="$PROJECT_DIR$/MiParser.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MiScanner.g4" beforeDir="false" afterPath="$PROJECT_DIR$/MiScanner.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pruebas" beforeDir="false" afterPath="$PROJECT_DIR$/Pruebas" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ActParsASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ActParsASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ActParsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ActParsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$AddopContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$AddopContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$AddopPLUSASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$AddopPLUSASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$AddopSUBASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$AddopSUBASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BlocASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BlocASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BlockContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BlockContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BlockStatementASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BlockStatementASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BoolASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BoolASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BreakASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$BreakASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CharASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CharASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ClassDeclContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ClassDeclContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ClassDeclarationClassASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ClassDeclarationClassASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CondFactASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CondFactASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CondFactContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CondFactContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CondTermASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CondTermASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CondTermContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$CondTermContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ConditionASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ConditionASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ConditionContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ConditionContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ConstDeclContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ConstDeclContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ConstDeclarationNumCharASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ConstDeclarationNumCharASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$DesignatorASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$DesignatorASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$DesignatorContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$DesignatorContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$DesignatorFactorASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$DesignatorFactorASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$DesignatorStatementASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$DesignatorStatementASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ExpressionASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ExpressionASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$FactorContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$FactorContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ForASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ForASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$FormParsASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$FormParsASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$FormParsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$FormParsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$IfASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$IfASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MethodDeclContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MethodDeclContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MethodDeclarationASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MethodDeclarationASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MulopContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MulopContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MulopDIVASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MulopDIVASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MulopMultASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MulopMultASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MulopPERCENTASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$MulopPERCENTASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$NewAASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$NewAASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$NumASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$NumASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$PcASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$PcASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$PepASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$PepASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ProgramASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ProgramASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ProgramContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ProgramContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ReadASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ReadASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopDEASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopDEASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopEEASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopEEASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopGEASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopGEASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopGREATERASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopGREATERASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopLEASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopLEASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopLESSASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$RelopLESSASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ReturnASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$ReturnASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$StatementContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$StatementContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$TermAStContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$TermAStContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$TermContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$TermContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$TypeASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$TypeASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$TypeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$TypeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$VarDeclContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$VarDeclContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$VarDeclarationVarASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$VarDeclarationVarASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$WhileASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$WhileASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$WriteASTContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser$WriteASTContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParser.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParserBaseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParserBaseListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParserBaseVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParserBaseVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParserListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParserListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParserVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiParserVisitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiScanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiScanner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiScanner.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/generated/MiScanner.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/interfaz/Interfaz.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Primera parte compiladores/visitor/visitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Primera parte compiladores/visitor/visitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/MiParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/MiParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/MiParser.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/MiParser.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/MiParserBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/MiParserBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/MiParserBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/MiParserBaseVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/MiParserListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/MiParserListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/MiParserVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/MiParserVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/MiScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/MiScanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/MiScanner.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/MiScanner.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaz/Interfaz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaz/Interfaz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitor/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitor/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitor/visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitor/visitor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -546,7 +445,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541951408539" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541951940831" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../Alpha" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -628,6 +527,14 @@
       <workItem from="1536242024203" duration="16000" />
       <workItem from="1536526874793" duration="51000" />
     </task>
+    <task id="LOCAL-00001" summary="Compi 3 fase">
+      <created>1541951529384</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1541951529384</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
