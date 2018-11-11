@@ -4,10 +4,14 @@ options{
     tokenVocab=MiScanner;
 }
 
-program: CLASS ID (constDecl | varDecl | classDecl)*
+program: CLASS ID (declaration)*
             KEYL (methodDecl)* KEYR                                             #programAST;
 
-constDecl: CONST type ID EQUALS ( NUM| CHAR_CONST) POINTC                       #constDeclarationNumCharAST;
+declaration: constDecl              #constDeclAST
+            |varDecl                #varDeclAST
+            |classDecl              #classDeclAST;
+
+constDecl: CONST type ID EQUALS ( NUM|CHAR_CONST) POINTC                        #constDeclarationNumCharAST;
 
 varDecl: type ID ( COMMA ID )* POINTC                                           #varDeclarationVarAST;
 
@@ -46,6 +50,8 @@ term: factor (mulop factor)*                                                    
 
 factor: designator (  PARENTL (actPars)? PARENTR| )                             #designatorFactorAST
 		 |  NUM                                                                 #numAST
+		 |  FLOAT                                                               #floatAST
+		 |  STRING                                                              #string
 		 |  CHAR_CONST                                                          #charAST
 		 | (TRUE | FALSE)                                                       #boolAST
 		 |  NEW ID                                                              #newAAST

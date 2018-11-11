@@ -1,36 +1,54 @@
 package visitor;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class SymbolTable {
 
     public class Symbol {
+        private String[] arreglo;
         private String name;
         private String type;
+        private String value;
         private int level;
+        private boolean array;
+        private int pasadas=0;
 
-        public Symbol(String n, String t, int l) {
+        public Symbol(String n, String t, int l, boolean a) {
             this.name = n;
             this.type = t;
             this.level = l;
+            this.array = a;
+            this.value=null;
         }
 
+        public void setPasadas(String[] a) {this.arreglo=a; }
+
+        public void setPasadas() {this.pasadas=pasadas+1; }
+        public void setValue(String v){ this.value=v; }
+
+        public int getPasadas() {return this.pasadas; }
+        public String getValue() {
+            return this.value;
+        }
         public int getLevel() {
-            return level;
+            return this.level;
         }
-
         public String getName() {
-            return name;
+            return this.name;
         }
-
         public String getType() {
-            return type;
+            return this.type;
+        }
+        public boolean getArreglo() {
+            return this.array;
         }
 
         @Override
         public String toString(){
-            return "ID:"+this.name+",Type:"+this.type+",Level:"+this.level;
+            return "ID:"+this.name+",Type:"+this.type+",Level:"+this.level +", Array: "+array+", value: "+this.value;
         }
     }
 
@@ -40,9 +58,9 @@ public class SymbolTable {
     /**
      * Agrega un identificador a la Tabla
      */
-    public int enter(String id, String tipo) {
+    public int enter(String id, String tipo,boolean array) {
         if (!this.exists(id,actualLevel)) {
-            table.add(new Symbol(id, tipo, actualLevel));
+            table.add(new Symbol(id, tipo, actualLevel,array));
             return 0; //means id was succesfully inserted in table
         }
         else
@@ -86,11 +104,10 @@ public class SymbolTable {
      * Se borran todos los campos de la tabla asociados con el nivel
      */
     public void closeScope() {
-        for (int i=table.size()-1; i<0;i--)
-            if (table.get(i).getLevel()==this.actualLevel)
+        for (int i=table.size()-1; i >= 0; i--)
+            if (table.get(i).getLevel()==this.actualLevel) {
                 table.remove(i);
-            else
-                break;
+            }
         this.actualLevel--;
     }
 

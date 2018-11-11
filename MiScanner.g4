@@ -1,15 +1,5 @@
 lexer grammar MiScanner;
 
-//Palabras claves
-/*CHAR: 'char';
-INT:'int';
-FLOAT:'float';
-BOOL:'bool';
-STRING:'string';
-LEN
-CHR
-ORD
-*/
 
 //Puntuation Marks
 COMMA:      ',';
@@ -56,9 +46,10 @@ PERCENT:'%';
 TRUE:'true';
 FALSE:'false';
 
-
+STRING: '"' (LETTER|DIGIT)* '"';
 ID: LETTER(LETTER|DIGIT|'_')*;
 NUM: DIGIT(DIGIT)*;
+FLOAT:DIGIT+ '.' ('0'..'9')*;
 //CHARCONST: ;
 
 COMMENT:   '/*' .*? '*/' -> skip;

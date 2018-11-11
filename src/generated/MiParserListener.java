@@ -20,6 +20,42 @@ public interface MiParserListener extends ParseTreeListener {
 	 */
 	void exitProgramAST(MiParser.ProgramASTContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code constDeclAST}
+	 * labeled alternative in {@link MiParser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstDeclAST(MiParser.ConstDeclASTContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code constDeclAST}
+	 * labeled alternative in {@link MiParser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstDeclAST(MiParser.ConstDeclASTContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code varDeclAST}
+	 * labeled alternative in {@link MiParser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterVarDeclAST(MiParser.VarDeclASTContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code varDeclAST}
+	 * labeled alternative in {@link MiParser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitVarDeclAST(MiParser.VarDeclASTContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code classDeclAST}
+	 * labeled alternative in {@link MiParser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterClassDeclAST(MiParser.ClassDeclASTContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code classDeclAST}
+	 * labeled alternative in {@link MiParser#declaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitClassDeclAST(MiParser.ClassDeclASTContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code constDeclarationNumCharAST}
 	 * labeled alternative in {@link MiParser#constDecl}.
 	 * @param ctx the parse tree
@@ -319,6 +355,30 @@ public interface MiParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNumAST(MiParser.NumASTContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code floatAST}
+	 * labeled alternative in {@link MiParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void enterFloatAST(MiParser.FloatASTContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code floatAST}
+	 * labeled alternative in {@link MiParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void exitFloatAST(MiParser.FloatASTContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code string}
+	 * labeled alternative in {@link MiParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void enterString(MiParser.StringContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code string}
+	 * labeled alternative in {@link MiParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void exitString(MiParser.StringContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code charAST}
 	 * labeled alternative in {@link MiParser#factor}.

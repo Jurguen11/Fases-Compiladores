@@ -18,6 +18,27 @@ public interface MiParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgramAST(MiParser.ProgramASTContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code constDeclAST}
+	 * labeled alternative in {@link MiParser#declaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstDeclAST(MiParser.ConstDeclASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code varDeclAST}
+	 * labeled alternative in {@link MiParser#declaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarDeclAST(MiParser.VarDeclASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code classDeclAST}
+	 * labeled alternative in {@link MiParser#declaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassDeclAST(MiParser.ClassDeclASTContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code constDeclarationNumCharAST}
 	 * labeled alternative in {@link MiParser#constDecl}.
 	 * @param ctx the parse tree
@@ -192,6 +213,20 @@ public interface MiParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitNumAST(MiParser.NumASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code floatAST}
+	 * labeled alternative in {@link MiParser#factor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFloatAST(MiParser.FloatASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code string}
+	 * labeled alternative in {@link MiParser#factor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitString(MiParser.StringContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code charAST}
 	 * labeled alternative in {@link MiParser#factor}.

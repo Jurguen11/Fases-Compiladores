@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package interfaz;
+import Interprete.interprete;
 import generated.*;
 import linea.TextLineNumber;
 import clasesCompiladores.Editor;
@@ -13,7 +14,6 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.tree.ParseTree;
-
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -30,12 +30,11 @@ public class Interfaz extends javax.swing.JFrame {
     public  static int enters=0;
     private Editor editor;
     MiScanner inst = null;
-    MiParser parser=null;
-    CharStream input=null;
+    MiParser parser = null;
+    CharStream input = null;
     CommonTokenStream tokens = null;
-    ParseTree tree=null;
-
-
+    ParseTree tree = null;
+    interprete inter = null;
     public static LinkedList<String> msjsError;
     /**
      * Creates new form Interfaz
@@ -238,11 +237,25 @@ public class Interfaz extends javax.swing.JFrame {
                     parser.addErrorListener(ErrorListener.INSTANCE);
                     try{
                         tree =parser.program();
-                        for (String i : msjsError){
+                        inter=new interprete();
+                        inter.visit(tree);
+                        //pv=new previsit();
+                       /* v.visit(tree);
+                        v=new visitor();
+                        v.setVariables(pv.getST(),pv.getCT(),pv.getCLT(),pv.getMT());
+                        v.visit(tree);
+                        v.getListaErrores();
+                        */
+                       for (String i : msjsError){
                             if(PanelEdicion.getText().contains(i)){
 
                             }else{
-                                PanelEdicion.setText(PanelEdicion.getText()+i+'\n');
+                                PanelEdicion.setText(PanelEdicion.getText() + i + '\n');
+                               /* for (String j : v.getListaErrores()){
+                                    if(PanelEdicion.getText().contains(j)){
+                                    }
+                                    else {                                    }
+                                }*/
                             }
                         }
                     }
@@ -331,14 +344,26 @@ public class Interfaz extends javax.swing.JFrame {
             parser=new MiParser(tokens);
             parser.removeErrorListeners();
             parser.addErrorListener(ErrorListener.INSTANCE);
+
             try{
                 tree =parser.program();
-                for (String i : this.msjsError){
-                    //if(jTextArea1.getText().contains(i)){
 
-                    //}else{
+                inter=new interprete();
+                inter.visit(tree);
+                //Iniciando el visitor
+                //Obteniendo variables y metodos globales
+                //pv=new previsit();
+                //pv.visit(tree);
+                //v=new visitor();
+                //v.setVariables(pv.getST(),pv.getCT(),pv.getCLT(),pv.getMT());
+                //v.visit(tree);
+                //v.getListaErrores();
+                for (String i : this.msjsError){
+                    if(jTextArea1.getText().contains(i)){
+
+                    }else{
                         jTextArea1.setText(jTextArea1.getText()+i+'\n');
-                    //}
+                    }
                 }
                 jTextArea1.setText(jTextArea1.getText()+"Compilación finalizada");
             }
@@ -348,7 +373,7 @@ public class Interfaz extends javax.swing.JFrame {
         }
         catch(Exception e){
             JFrame parent = new JFrame();
-            String multiLineMsg[] = { "Error,", " No ha guardado el archivo"} ;
+            String multiLineMsg[] = { "Error,", " Su codigo tiene errores"} ;
             JOptionPane.showMessageDialog(parent, multiLineMsg);
             }
 

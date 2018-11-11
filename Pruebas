@@ -1,31 +1,94 @@
-class P
+class AllProds
+  const int nPoints = 2;
 
-	const int size = 10 ;
-	
-	class Table {
-		List pos;
-		List neg;
-	}
-	Table val; 
-{ 
-	void Main ()
-		int x, i ;
-	{
-		//---------- Initialize val ----------
-		val = new Table;
-		val.pos = new List; val.neg = new List;
-		i = 0;
-		while (i < size) {
-			add(val.pos,0); add(val.neg,0);
-			i ++ ;	
-		}
+const char caracterEspecial = '\n'; //no debe mostrar error puesto que es caracter especial **********
+  class Point {
+    // int x, y; @ ` //error de caracteres invalidos tira error
+  }
 
-		//---------- Read values ----------
-		read (x) ;
-		while ( -size < x && x < size )  {
-			if ( 0 <= x ) val.pos [ x ] ++ ;
-			else val.neg [ -x ] ++ ;
-			read( x ) ;
-		}
-	}
- }
+  char[] msg;
+  int[] pArr;
+  bool test1;
+
+{
+  void WriteError ()
+    int i;
+    bool test2;
+  {
+    /* imprimir mensaje error */
+    i = 0;
+    test1 = true;
+    while(i<len(msg)){write(msg[i]);i++;}
+    //FORMA INCORRECTA
+   //for(i;i<len(msg);i++){write(msg[i])}
+   //FORMA CORRECTA
+   for(i;i<len(msg);i++;){write(msg[i]);} //debe dar error por falta de ; DA ERROR CORRECTAMENTE    write(exclaim);
+    while (i > 0) {
+      i--;
+      if (i < 3 && test1==true) break;
+      write(msg[i], 2);
+    }
+  }
+
+  int GetX (int p) { return p.x.Z[3+4]; } //no deber�a dar error la expresi�n
+
+  void SetX (int x, int p) {
+    if (x > -10 && x <= 9 ||
+        x == 4*3/4%4+12-11*(2147483647/(-2147483647-1)%2) ) //no deber�a dar error la expresi�n
+      p.x = x;
+    else WriteError();
+  }
+
+
+  void SetMsg () {
+    //msg = new char[5];
+ /* AQUI ME DA ERROR YA QUE EL NEW ES UN IDENTIFIER COMPUESTO DE LETRAS Y DIGITOS
+	SE PUEDE RESOLVER CAMBIANDO LA REGLA QUE EN VEZ DE UN NEW IDENT SEA UN
+	 NEW IDENT [  NUMBER  ] |
+	NEW IDENT DESIGNATOR
+*/
+    msg[0] = 'E';
+    msg[1] = 'r';
+    msg[2] = 'r';
+    msg[3] = 'r';
+    msg[4] = msg[3];
+    msg[3] = 'o';
+  }
+
+  void SetPoints ()
+    int i;
+  {
+    //pArr = new Point [ nPoints ]; AQUI ME DA ERROR YA QUE EL NEW ES UN IDENTIFIER COMPUESTO DE LETRAS Y DIGITOS
+    i = 0;
+    while (i < len(pArr)) {
+      pArr[i] = new Point;
+      pArr[i].x = i;
+      pArr[i].y = i;
+      i++;
+    }
+  }
+
+  int prueba(int x, char w)
+  {
+      return val.neg[i].algo;
+	/*comentario
+	/*mal*/ /*anidado
+	*/
+  }
+
+  void Main ()
+    int i;
+  {
+    SetMsg();
+    SetPoints();
+    read(i);
+    if (i < nPoints) {
+      write(GetX(pArr[i]));
+      write(pArr[i].y);
+    }
+    else
+      WriteError();
+    write('n');
+
+  }
+}
