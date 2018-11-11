@@ -49,11 +49,7 @@ public class interprete extends MiParserBaseVisitor {
 
         @Override
         public String toString() {
-            return "instruccion( " +
-                    "linea=" + linea +
-                    ", params='" + params + '\'' +
-                    ", instruccionNombre='" + instruccionNombre + '\'' +
-                    ')';
+            return  + linea  + " " + instruccionNombre + " " + params;
         }
     }
 
@@ -117,9 +113,14 @@ public class interprete extends MiParserBaseVisitor {
             isGlobal=false;
             visit(ctx.methodDecl(i));
         }
+        instruccion a = new instruccion(linea,"","END");
+        listaIntruccionesGeneradas.add(a);
+
         for (int i=0; i <= listaIntruccionesGeneradas.size()-1;i++){
             System.out.println(listaIntruccionesGeneradas.get(i));
         }
+
+
         return null;
     }
 
@@ -186,9 +187,15 @@ public class interprete extends MiParserBaseVisitor {
                 instruccion a=new instruccion(linea, ctx.ID(i).getText() ,listaIntrucciones.get(1));
                 listaIntruccionesGeneradas.add(a);
                 linea++;
+                a=new instruccion(linea, ctx.ID(i).getText() ,listaIntrucciones.get(6));
+                listaIntruccionesGeneradas.add(a);
+                linea++;
             }
             else if(t.getText().equals("int")){
                 instruccion a=new instruccion(linea, ctx.ID(i).getText() ,listaIntrucciones.get(0));
+                listaIntruccionesGeneradas.add(a);
+                linea++;
+                a=new instruccion(linea, ctx.ID(i).getText() ,listaIntrucciones.get(6));
                 listaIntruccionesGeneradas.add(a);
                 linea++;
             }
@@ -222,34 +229,87 @@ public class interprete extends MiParserBaseVisitor {
                 }
             }
         }
-        else if(ctx.PARENTL()!=null){
-            visit(ctx.actPars());
-        }
         else if(ctx.PP()!=null){
 
         }
         else if(ctx.SS()!=null){
 
         }
+        else{
+            int n=(Integer) visit(ctx.actPars());
+            int aux=linea;
+            instruccion a = new instruccion(linea,t,listaIntrucciones.get(8));
+            listaIntruccionesGeneradas.add(a);
+            linea++;
+            listaIntruccionesGeneradas.get(aux).setParams(String.valueOf(n));
+        }
+
 
         return null;
     }
     @Override public Object visitIfAST(MiParser.IfASTContext ctx) {
         visit(ctx.condition());
-        for( int i = 0; i < ctx.statement().size(); i++) {
-            visit(ctx.statement(i));
+
+        int aux = linea;
+        instruccion a = new instruccion(linea, String.valueOf(linea), listaIntrucciones.get(20));
+        listaIntruccionesGeneradas.add(a);
+        linea++;
+        visit(ctx.statement(0));
+        listaIntruccionesGeneradas.get(aux).setParams(String.valueOf(linea-1));
+
+        if(ctx.ELSE()!=null){
+            aux = linea;
+            a = new instruccion(linea,String.valueOf(linea),listaIntrucciones.get(18));
+            listaIntruccionesGeneradas.add(a);
+            linea++;
+            visit(ctx.statement(1));
+            listaIntruccionesGeneradas.get(aux).setParams(String.valueOf(linea-1));
         }
         return null;
     }
     @Override public Object visitForAST(MiParser.ForASTContext ctx) { return null; }
-    @Override public Object visitWhileAST(MiParser.WhileASTContext ctx) { return null; }
+    @Override public Object visitWhileAST(MiParser.WhileASTContext ctx) {
+        int aux1 = linea;
+        visit(ctx.condition());
+
+        int aux = linea;
+        instruccion a = new instruccion(linea, String.valueOf(linea), listaIntrucciones.get(20));
+        listaIntruccionesGeneradas.add(a);
+        linea++;
+
+        visit(ctx.statement());
+
+        listaIntruccionesGeneradas.get(aux).setParams(String.valueOf(linea));
+
+        a = new instruccion(linea, String.valueOf(linea), listaIntrucciones.get(18));
+        listaIntruccionesGeneradas.add(a);
+        linea++;
+
+        listaIntruccionesGeneradas.get(linea-1).setParams(String.valueOf(aux1-1));
+        return null;
+    }
     @Override public Object visitBreakAST(MiParser.BreakASTContext ctx) { return null; }
-    @Override public Object visitReturnAST(MiParser.ReturnASTContext ctx) { return null; }
+    @Override public Object visitReturnAST(MiParser.ReturnASTContext ctx) {
+        visit(ctx.expr());
+        instruccion a = new instruccion(linea,"",listaIntrucciones.get(9));
+        listaIntruccionesGeneradas.add(a);
+        linea++;
+        return null;
+    }
     @Override public Object visitReadAST(MiParser.ReadASTContext ctx) { return null; }
-    @Override public Object visitWriteAST(MiParser.WriteASTContext ctx) { return null; }
+    @Override public Object visitWriteAST(MiParser.WriteASTContext ctx) {
+        visit(ctx.expr());
+        instruccion a = new instruccion(linea,"write",listaIntrucciones.get(7));
+        listaIntruccionesGeneradas.add(a);
+        linea++;
+
+        a = new instruccion(linea,"0",listaIntrucciones.get(8));
+        listaIntruccionesGeneradas.add(a);
+        linea++;
+        return null;
+    }
 
     @Override public Object visitBlockStatementAST(MiParser.BlockStatementASTContext ctx) {
-        System.out.println("Vamos a block");
         visit(ctx.block());
         return null;
     }
@@ -261,77 +321,107 @@ public class interprete extends MiParserBaseVisitor {
         }
         return null;
     }
-    @Override public Object visitActParsAST(MiParser.ActParsASTContext ctx) { return null; }
+    @Override public Object visitActParsAST(MiParser.ActParsASTContext ctx) {
+        for(int i = 0; i < ctx.expr().size(); i++) {
+            visit(ctx.expr(i));
+        }
+        return ctx.expr().size();
+    }
     @Override public Object visitConditionAST(MiParser.ConditionASTContext ctx) {
         for(int i = 0; i < ctx.condTerm().size();i++){
             visit(ctx.condTerm(i));
+            if(i>=1){
+                instruccion a = new instruccion(linea,"",listaIntrucciones.get(16));
+                listaIntruccionesGeneradas.add(a);
+                linea++;
+            }
         }
         return null;
     }
     @Override public Object visitCondTermAST(MiParser.CondTermASTContext ctx) {
         for(int i = 0; i < ctx.condFact().size();i++){
             visit(ctx.condFact(i));
+            if(i>=1){
+                instruccion a = new instruccion(linea,"",listaIntrucciones.get(15));
+                listaIntruccionesGeneradas.add(a);
+                linea++;
+            }
         }
         return null;
     }
     @Override public Object visitCondFactAST(MiParser.CondFactASTContext ctx) {
-        String t= (String) visit(ctx.expr(0));
-        System.out.println(t+ "condFa");
-        visit(ctx.relop());
-        t=(String) visit(ctx.expr(1));
-        System.out.println(t+ "condFa2");
+        visit(ctx.expr(0));
+        String t = (String) visit(ctx.relop());
+        visit(ctx.expr(1));
+        instruccion a = new instruccion(linea,t,listaIntrucciones.get(10));
+        listaIntruccionesGeneradas.add(a);
+        linea++;
         return null;
     }
 
-    /*for (int j = 0; j < listaIntruccionesGeneradas.size(); j++) {
-                System.out.println(t);
-                if (t.equals(listaIntruccionesGeneradas.get(j).getParams())) {
-                    if (listaIntruccionesGeneradas.get(j).getInstruccionNombre().equals(listaIntrucciones.get(2)) |
-                            listaIntruccionesGeneradas.get(j).getInstruccionNombre().equals(listaIntrucciones.get(3))) {
-                        instruccion a = new instruccion(linea, t, listaIntrucciones.get(7));
-                        listaIntruccionesGeneradas.add(a);
-                        linea++;
-                    } else if (listaIntruccionesGeneradas.get(j).getInstruccionNombre().equals(listaIntrucciones.get(0)) |
-                            listaIntruccionesGeneradas.get(j).getInstruccionNombre().equals(listaIntrucciones.get(1))) {
-                        instruccion a = new instruccion(linea, t, listaIntrucciones.get(5));
-                        listaIntruccionesGeneradas.add(a);
-                        linea++;
-                    }
-                }
-            }*/
     @Override public Object visitExpressionAST(MiParser.ExpressionASTContext ctx) {
-        String t=(String)visit(ctx.term(0));
+        visit(ctx.term(0));
         for(int i = 0; i < ctx.addop().size(); i++) {
-            visit(ctx.addop(i ));
+            String t = (String) visit(ctx.addop(i ));
             //caragar el operador
-            t=(String)visit(ctx.term(i+1));
+            visit(ctx.term(i+1));
+            instruccion a=null;
+            if(t.equals("+")){
+                a = new instruccion(linea,"",listaIntrucciones.get(12));
+            }
+            else if (t.equals("-")){
+                a = new instruccion(linea,"",listaIntrucciones.get(11));
+            }
+            listaIntruccionesGeneradas.add(a);
+            linea++;
         }
-        return t;
+        return null;
     }
     @Override public Object visitTermASt(MiParser.TermAStContext ctx) {
-        String t =(String)visit(ctx.factor(0));
-        for( int i = 1; i < ctx.mulop().size() ; i++){
-            visit(ctx.mulop(i));
+        visit(ctx.factor(0));
+        for( int i = 0; i < ctx.mulop().size() ; i++){
+            String t = (String)visit(ctx.mulop(i));
             //cargar operador
             visit( ctx.factor(i+1));
+            instruccion a=null;
+            if(t.equals("*")){
+                a = new instruccion(linea,"",listaIntrucciones.get(13));
+            }
+            else if (t.equals("/")){
+                a = new instruccion(linea,"",listaIntrucciones.get(14));
+            }
+            else if(t.equals("%")){
+                a = new instruccion(linea,"",listaIntrucciones.get(17));
+            }
+            listaIntruccionesGeneradas.add(a);
+            linea++;
         }
-        return t;
+        return null;
     }
     @Override public Object visitDesignatorFactorAST(MiParser.DesignatorFactorASTContext ctx) {
         String t=(String) visit(ctx.designator());
-        if(ctx.actPars()!=null){
-            visit(ctx.actPars());
+        int n=0;
+        if(ctx.actPars()!= null){
+            n=(Integer) visit(ctx.actPars());
         }
         for (int i=0; i < listaIntruccionesGeneradas.size(); i++){
             if(t.equals(listaIntruccionesGeneradas.get(i).getParams())){
                 if(listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(2)) |
-                        listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(3))){
+                        listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(3))|
+                        listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(21))){
+
                     instruccion a = new instruccion(linea,t,listaIntrucciones.get(7));
                     listaIntruccionesGeneradas.add(a);
                     linea++;
+                    if(listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(21))){
+                        a = new instruccion(linea,String.valueOf(n),listaIntrucciones.get(8));
+                        listaIntruccionesGeneradas.add(a);
+                        linea++;
+                    }
                 }
                 else if(listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(0)) |
-                        listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(1))){
+                        listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(1)) )
+                {
                     instruccion a = new instruccion(linea,t,listaIntrucciones.get(5));
                     listaIntruccionesGeneradas.add(a);
                     linea++;
@@ -365,46 +455,41 @@ public class interprete extends MiParserBaseVisitor {
         return ctx.getText();
     }
 
-    @Override public Object visitRelopEEAST(MiParser.RelopEEASTContext ctx) { return null; }
+    @Override public Object visitRelopEEAST(MiParser.RelopEEASTContext ctx) {
+        return ctx.EE().getText();
+    }
 
-    @Override public Object visitRelopDEAST(MiParser.RelopDEASTContext ctx) { return null; }
+    @Override public Object visitRelopDEAST(MiParser.RelopDEASTContext ctx) {
+        return ctx.DE().getText();
+    }
 
-    @Override public Object visitRelopGREATERAST(MiParser.RelopGREATERASTContext ctx) { return null; }
+    @Override public Object visitRelopGREATERAST(MiParser.RelopGREATERASTContext ctx) {
+        return ctx.GREATER().getText();
+    }
 
-    @Override public Object visitRelopGEAST(MiParser.RelopGEASTContext ctx) { return null; }
+    @Override public Object visitRelopGEAST(MiParser.RelopGEASTContext ctx) {
+        return ctx.GE().getText();
+    }
 
-    @Override public Object visitRelopLESSAST(MiParser.RelopLESSASTContext ctx) { return null; }
-
-    @Override public Object visitRelopLEAST(MiParser.RelopLEASTContext ctx) { return null; }
-
+    @Override public Object visitRelopLESSAST(MiParser.RelopLESSASTContext ctx) {
+        return ctx.LESS().getText();
+    }
+    @Override public Object visitRelopLEAST(MiParser.RelopLEASTContext ctx) {
+        return ctx.LE().getText();
+    }
     @Override public Object visitAddopPLUSAST(MiParser.AddopPLUSASTContext ctx) {
-        instruccion a = new instruccion(linea,ctx.PLUS().getText(),listaIntrucciones.get(12));
-        listaIntruccionesGeneradas.add(a);
-        linea++;
-        return null; }
+        return ctx.PLUS().getText(); }
 
     @Override public Object visitAddopSUBAST(MiParser.AddopSUBASTContext ctx) {
-        instruccion a = new instruccion(linea,ctx.SUB().getText(),listaIntrucciones.get(11));
-        listaIntruccionesGeneradas.add(a);
-        linea++;
-        return null; }
+        return ctx.SUB().getText(); }
 
     @Override public Object visitMulopMultAST(MiParser.MulopMultASTContext ctx) {
-        instruccion a = new instruccion(linea,ctx.MULT().getText(),listaIntrucciones.get(13));
-        listaIntruccionesGeneradas.add(a);
-        linea++;
-        return null; }
+        return ctx.MULT().getText(); }
 
     @Override public Object visitMulopDIVAST(MiParser.MulopDIVASTContext ctx) {
-        instruccion a = new instruccion(linea,ctx.DIV().getText(),listaIntrucciones.get(14));
-        listaIntruccionesGeneradas.add(a);
-        linea++;
-        return null; }
+        return ctx.DIV().getText(); }
 
     @Override public Object visitMulopPERCENTAST(MiParser.MulopPERCENTASTContext ctx) {
-        instruccion a = new instruccion(linea,ctx.PERCENT().getText(),listaIntrucciones.get(17));
-        listaIntruccionesGeneradas.add(a);
-        linea++;
-        return null;
+        return ctx.PERCENT().getText();
     }
 }
