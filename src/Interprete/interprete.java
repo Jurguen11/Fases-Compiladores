@@ -181,7 +181,7 @@ public class interprete extends MiParserBaseVisitor {
         return null;
     }
     @Override public Object visitFormParsAST(MiParser.FormParsASTContext ctx) {
-        for (int i = 0; i <= ctx.ID().size() - 1; i++) {
+        for (int i = ctx.ID().size() - 1; i >= 0; i--) {
             Token t= (Token) visit(ctx.type(i));
             if(t.getText().equals("char")){
                 instruccion a=new instruccion(linea, ctx.ID(i).getText() ,listaIntrucciones.get(1));
@@ -314,11 +314,9 @@ public class interprete extends MiParserBaseVisitor {
         }
         else{
             int n=(Integer) visit(ctx.actPars());
-            int aux=linea;
-            instruccion a = new instruccion(linea,t,listaIntrucciones.get(8));
+            instruccion a = new instruccion(linea,String.valueOf(n),listaIntrucciones.get(8));
             listaIntruccionesGeneradas.add(a);
             linea++;
-            listaIntruccionesGeneradas.get(aux).setParams(String.valueOf(n));
         }
         return null;
     }
