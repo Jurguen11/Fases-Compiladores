@@ -209,6 +209,7 @@ public class interprete extends MiParserBaseVisitor {
     }
 
     @Override public Object visitDesignatorStatementAST(MiParser.DesignatorStatementASTContext ctx) {
+
         String t = (String) visit(ctx.designator());
         if(ctx.EQUALS()!=null) {
             visit(ctx.expr());
@@ -219,21 +220,97 @@ public class interprete extends MiParserBaseVisitor {
                         instruccion a = new instruccion(linea,t,listaIntrucciones.get(22));
                         listaIntruccionesGeneradas.add(a);
                         linea++;
+                        break;
                     }
                     else if(listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(0)) |
                             listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(1))){
                         instruccion a = new instruccion(linea,t,listaIntrucciones.get(6));
                         listaIntruccionesGeneradas.add(a);
                         linea++;
+                        break;
                     }
                 }
             }
         }
         else if(ctx.PP()!=null){
-
+            boolean global=false;
+            for (int i=0 ; i < listaIntruccionesGeneradas.size(); i++){
+                if(listaIntruccionesGeneradas.get(i).getParams().equals(t)){
+                    if(listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(2))){
+                        instruccion b = new instruccion(linea,t,listaIntrucciones.get(7));
+                        listaIntruccionesGeneradas.add(b);
+                        linea++;
+                        global=true;
+                        System.out.println("Es global");
+                        break;
+                    }
+                    else if(listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(0))){
+                        instruccion b = new instruccion(linea,t,listaIntrucciones.get(5));
+                        listaIntruccionesGeneradas.add(b);
+                        linea++;
+                        global=false;
+                        System.out.println("Es local");
+                        break;
+                    }
+                }
+            }
+            instruccion a = new instruccion(linea,String.valueOf(1),listaIntrucciones.get(4));
+            listaIntruccionesGeneradas.add(a);
+            linea++;
+            a = new instruccion(linea,"",listaIntrucciones.get(12));
+            listaIntruccionesGeneradas.add(a);
+            linea++;
+            if(global) {
+                a = new instruccion(linea, t, listaIntrucciones.get(22));
+                listaIntruccionesGeneradas.add(a);
+                linea++;
+            }
+            else {
+                a = new instruccion(linea, t, listaIntrucciones.get(6));
+                listaIntruccionesGeneradas.add(a);
+                linea++;
+            }
         }
-        else if(ctx.SS()!=null){
 
+        else if(ctx.SS()!= null){
+            System.out.println("HOLA");
+            boolean global=false;
+            for (int i=0 ; i < listaIntruccionesGeneradas.size(); i++){
+                if(listaIntruccionesGeneradas.get(i).getParams().equals(t)){
+                    if(listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(2))){
+                        instruccion b = new instruccion(linea,t,listaIntrucciones.get(7));
+                        listaIntruccionesGeneradas.add(b);
+                        linea++;
+                        global=true;
+                        System.out.println("Es global");
+                        break;
+                    }
+                    else if(listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(0))){
+                        instruccion b = new instruccion(linea,t,listaIntrucciones.get(5));
+                        listaIntruccionesGeneradas.add(b);
+                        linea++;
+                        global=false;
+                        System.out.println("Es local");
+                        break;
+                    }
+                }
+            }
+            instruccion a = new instruccion(linea,String.valueOf(1),listaIntrucciones.get(4));
+            listaIntruccionesGeneradas.add(a);
+            linea++;
+            a = new instruccion(linea,"",listaIntrucciones.get(11));
+            listaIntruccionesGeneradas.add(a);
+            linea++;
+            if(global) {
+                a = new instruccion(linea, t, listaIntrucciones.get(22));
+                listaIntruccionesGeneradas.add(a);
+                linea++;
+            }
+            else {
+                a = new instruccion(linea, t, listaIntrucciones.get(6));
+                listaIntruccionesGeneradas.add(a);
+                linea++;
+            }
         }
         else{
             int n=(Integer) visit(ctx.actPars());
@@ -243,10 +320,9 @@ public class interprete extends MiParserBaseVisitor {
             linea++;
             listaIntruccionesGeneradas.get(aux).setParams(String.valueOf(n));
         }
-
-
         return null;
     }
+
     @Override public Object visitIfAST(MiParser.IfASTContext ctx) {
         visit(ctx.condition());
 
@@ -360,9 +436,21 @@ public class interprete extends MiParserBaseVisitor {
     }
 
     @Override public Object visitExpressionAST(MiParser.ExpressionASTContext ctx) {
-        visit(ctx.term(0));
+        if(ctx.SUB()!=null){
+            instruccion a = new instruccion(linea,String.valueOf(-1),listaIntrucciones.get(4));
+            listaIntruccionesGeneradas.add(a);
+            linea++;
+            visit(ctx.term(0));
+            a = new instruccion(linea,"",listaIntrucciones.get(13));
+            listaIntruccionesGeneradas.add(a);
+            linea++;
+        }
+        else{
+            visit(ctx.term(0));
+        }
         for(int i = 0; i < ctx.addop().size(); i++) {
             String t = (String) visit(ctx.addop(i ));
+
             //caragar el operador
             visit(ctx.term(i+1));
             instruccion a=null;
@@ -418,6 +506,7 @@ public class interprete extends MiParserBaseVisitor {
                         listaIntruccionesGeneradas.add(a);
                         linea++;
                     }
+                    break;
                 }
                 else if(listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(0)) |
                         listaIntruccionesGeneradas.get(i).getInstruccionNombre().equals(listaIntrucciones.get(1)) )
@@ -425,6 +514,7 @@ public class interprete extends MiParserBaseVisitor {
                     instruccion a = new instruccion(linea,t,listaIntrucciones.get(5));
                     listaIntruccionesGeneradas.add(a);
                     linea++;
+                    break;
                 }
             }
         }
